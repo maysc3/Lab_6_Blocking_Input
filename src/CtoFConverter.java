@@ -16,11 +16,14 @@ public class CtoFConverter {
             {
                 System.out.print("Enter a valid temperature in celsius: ");
 
-                if (in.hasNextDouble()) {
+                if (in.hasNextDouble())
+                {
                     cTemp = in.nextDouble();
                     in.nextLine(); // clears buffer
                     tempDone = true;
-                } else {
+                }
+                else
+                {
                     trash = in.nextLine();
                 }
             }
