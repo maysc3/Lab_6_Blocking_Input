@@ -4,15 +4,15 @@ public class FuelCosts
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
-        double tankGal = 0;
-        double fuelEfic = 0; // miles/gal
+        double tankCapacity = 0;
+        double mpg = 0; // miles/gal
         double gasPrice = 0; // $/gal
         double hundredMilesCost = 0;
         double fullTankMileage = 0;
-        boolean planTrip = false;
-        boolean getTankGal = false;
-        boolean getFuelEfic = false;
-        boolean getGasPrice = false;
+        boolean done = false;
+        boolean doneTankGal = false;
+        boolean doneFuelEfic = false;
+        boolean doneGasPrice = false;
         String trash = "";
         String doneWithTripYN = "";
 
@@ -23,32 +23,39 @@ public class FuelCosts
                 System.out.print("Enter how many gallons your car's tank has: ");
                 if(in.hasNextDouble())
                 {
-                    tankGal = in.nextDouble();
+                    tankCapacity = in.nextDouble();
                     in.nextLine();
-                    getTankGal = true;
+                    if (tankCapacity > 0)
+                    {
+                        doneTankGal = true;
+                    }
                 }
                 else {
                     trash = in.nextLine();
                 }
 
             }
-            while (!getTankGal);
+            while (!doneTankGal);
 
             do // get fuel efficiency
             {
                 System.out.print("Enter fuel efficiency in miles per gallon: ");
                 if(in.hasNextDouble())
                 {
-                    fuelEfic = in.nextDouble();
+                    mpg = in.nextDouble();
                     in.nextLine();
-                    getFuelEfic = true;
+
+                    if (mpg > 0)
+                    {
+                        doneFuelEfic = true;
+                    }
                 }
                 else {
                     trash = in.nextLine();
                 }
 
             }
-            while (!getFuelEfic);
+            while (!doneFuelEfic);
             do // get gas price
             {
                 System.out.print("Enter the price of gas in mpg: ");
@@ -56,17 +63,20 @@ public class FuelCosts
                 {
                     gasPrice = in.nextDouble();
                     in.nextLine();
-                    getGasPrice = true;
+                    if (gasPrice > 0)
+                    {
+                    doneGasPrice = true;
+                    }
                 }
                 else {
                     trash = in.nextLine();
                 }
             }
-            while (!getGasPrice);
+            while (!doneGasPrice);
 
-            hundredMilesCost = 100.0*((gasPrice *(tankGal))/(fuelEfic));
+            hundredMilesCost = 100.0*((gasPrice *(tankCapacity))/(mpg));
             double roundedHundredMilesCost = Math.round(hundredMilesCost * 100.0) / 100.0;
-            fullTankMileage = tankGal*fuelEfic;
+            fullTankMileage = tankCapacity * mpg;
             System.out.println("The cost to drive 100 miles is " + roundedHundredMilesCost + "$"); // rounds price
             System.out.println("The car can go " + fullTankMileage + " miles on a full tank of gas. ");
             System.out.print("Plan another trip? [Y/N]: ");
@@ -75,9 +85,9 @@ public class FuelCosts
                 doneWithTripYN = in.nextLine();
                 if(doneWithTripYN.equalsIgnoreCase("N"))
                 {
-                    planTrip = true;
+                    done = true;
                 }
             }
-        } while(!planTrip);
+        } while(!done);
     }
 }
