@@ -51,7 +51,7 @@ public class FuelCosts
             while (!getFuelEfic);
             do // get gas price
             {
-                System.out.print("Enter the price of gas: ");
+                System.out.print("Enter the price of gas in mpg: ");
                 if(in.hasNextDouble())
                 {
                     gasPrice = in.nextDouble();
@@ -65,8 +65,9 @@ public class FuelCosts
             while (!getGasPrice);
 
             hundredMilesCost = 100.0*((gasPrice *(tankGal))/(fuelEfic));
+            double roundedHundredMilesCost = Math.round(hundredMilesCost * 100.0) / 100.0;
             fullTankMileage = tankGal*fuelEfic;
-            System.out.println("The cost to drive 100 miles is " + hundredMilesCost);
+            System.out.println("The cost to drive 100 miles is " + roundedHundredMilesCost + "$"); // rounds price
             System.out.println("The car can go " + fullTankMileage + " miles on a full tank of gas. ");
             System.out.print("Plan another trip? [Y/N]: ");
             if (in.hasNextLine())
