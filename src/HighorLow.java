@@ -28,9 +28,9 @@ public class HighorLow
             if (val == guess) {
                 System.out.println("You were right on the money! ");
             } else if (guess < val) {
-                System.out.println("You're guess was low :( ");
+                System.out.println("Your guess was low :( ");
             } else {
-                System.out.println("You're guess was too high :( ");
+                System.out.println("Your guess was too high :( ");
             }
             System.out.print("Guess again? [Y/N]: ");
             if(in.hasNextLine())
